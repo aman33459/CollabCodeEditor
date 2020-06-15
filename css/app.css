@@ -22,11 +22,12 @@ body {
 
 .doc .doc__background-ribbon {
   height: 200px;
-  background: #3F51B5;
+  background: black;
 }
 
 .doc .doc__text-editor {
-  width: 60%;
+  width: 80%;
+  height: 100%;
   padding: 40px 28px;
   min-height: 300px;
   background: #fff;
