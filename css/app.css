@@ -24,7 +24,11 @@ body {
   height: 200px;
   background: black;
 }
-
+.topcorner{
+   position:absolute;
+   top:70px;
+   right:70px;
+  }
 .doc .doc__text-editor {
   width: 80%;
   height: 100%;

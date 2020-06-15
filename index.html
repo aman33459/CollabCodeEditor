@@ -6,6 +6,11 @@
     <title>Collaborative Text Editor</title>
     <link href="/css/app.css" rel="stylesheet"></link>
     <link href="/node_modules/codemirror/theme/dracula.css" rel="stylesheet"></link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="/node_modules/codemirror/addon/edit/matchbrackets.js"></link>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </head>
   <body>
     <header class="header">
@@ -14,16 +19,34 @@
     <div class="doc">
 
       <div class="doc__background-ribbon"></div>
-
       <div id="doc" class="doc__text-editor">
-          <p>Code</p>      
+          <p>Languages</p>
+          <p><select onchange="langChanged()" name="lang" id="langu">
+          <option value="javascript">js</option>
+          <option value="c">C</option>
+          <option value="c++">C++</option>
+          <option value="java">Java</option>
+          <option value="python">Python</option>
+        </select></p>    
+        <div class = "topcorner">
+       <button type="button" class="btn btn-primary btn-lg" onclick="exec()">Run</button></div>
           <textarea id='editor'> </textarea>
+          <p>Custom Input</p>
+            <input name="checkbox" type="checkbox" id="checkbox" onchange="toggleTextArea();" value="1"/>
+             <br><br>
+            <textarea style="display: none;" name="input" id="input"></textarea>
+
+          <p>Output</p>
+
+          <textarea id='output'></textarea>
 
       </div>
     </div>
     <script src="node_modules/codemirror/lib/codemirror.js"></script>
     <link rel="stylesheet" href="node_modules/codemirror/lib/codemirror.css">
     <script src="node_modules/codemirror/mode/javascript/javascript.js"></script>
+    <script src="node_modules/codemirror/mode/clike/clike.js"></script>
+    <script src="node_modules/codemirror/mode/python/python.js"></script>
     <script src="https://js.pusher.com/4.0/pusher.min.js"></script>
     <script src="/js/app.js"></script>
   </body>
