@@ -37,8 +37,8 @@ var times;
 });
     var channel = pusher.subscribe(id); // changes made to this id
     channel.bind('client-text-edit', function(html) {
-      console.log(html.editor);
-      console.log(html.lang);
+      //console.log(html.editor);
+      //console.log(html.lang);
       var lang = html.lang;
       var pos = editor.getCursor();
       editor.setValue(html.editor);
@@ -50,7 +50,8 @@ var times;
       editor.setSelection(pos);
       var sel = document.getElementById("langu");
       sel.value = lang;
-      console.log(sel.options[sel.selectedIndex].value);
+      language=lang;
+     // console.log(sel.options[sel.selectedIndex].value);
     });
     channel.bind('pusher:subscription_succeeded', function() {
       resolve(channel);
@@ -62,7 +63,7 @@ var times;
       data['lang'] = language;
       channel.trigger('client-text-edit', data);
     }
-    editor.on('inputRead' , triggerChange);
+    editor.on('keydown' , triggerChange);
   })
 
   function getUniqueId () {
@@ -79,7 +80,7 @@ var times;
 function langChanged(){
   var e = document.getElementById("langu");
   var lang = e.options[e.selectedIndex].value;
-  console.log(lang);
+ // console.log(lang);
   language=lang;
   if(lang == 'c') editor.setOption("mode","text/x-csrc");
   else if(lang == 'c++') editor.setOption("mode","text/x-c++src");
@@ -89,7 +90,7 @@ function langChanged(){
 }
 function getOutput(text){
   var data = null;
-  console.log(text);
+ // console.log(text);
   var xhr = new XMLHttpRequest();
   xhr.withCredentials = true;
 
@@ -98,15 +99,23 @@ function getOutput(text){
       console.log(this.responseText);
       var str = JSON.parse(this.responseText);
       console.log(str.status.description);
-      if(str.status.description == "Processing"){
+      if(str.status.description == "Processing" || str.status.description == "In Queue"){
         getOutput(text);
       }
       else if(str.status.description == "Accepted"){
         output.setValue(str.stdout + "\n\n" + "Time in secs\n\n" + str.time);
       }
-      else if( str.status.description == "Compilation Error"){
+      else if( str.status.id == "Compilation Error"){
           output.setValue(str.compile_output);
       }
+      else if(str.status.id >=7 && str.status.id <=12)
+      {
+        output.setValue(str.stderr);
+      }
+      else if(str.status.description == "Time Limit Exceeded"){
+          output.setValue(str.message);
+      }
+      else output.setValue("Internal Error!!!");
     }
   });
 
@@ -146,9 +155,9 @@ function exec(){
   xhr.withCredentials = true;
   xhr.addEventListener("readystatechange", function () {
     if (this.readyState === this.DONE) {
-      console.log(this.responseText);
+      //console.log(this.responseText);
       ok= this.responseText;
-      console.log(JSON.parse(ok).token);
+      //console.log(JSON.parse(ok).token);
       getOutput(JSON.parse(ok).token);
     }
   });
