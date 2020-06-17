@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var Pusher = require('pusher');
 
 var app = express();
+require('dotenv').config();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 

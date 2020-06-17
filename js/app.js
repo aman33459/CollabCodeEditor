@@ -3,7 +3,9 @@ var language;
 var output;
 var input;
 var times;
+
 (function () {
+  //var myVar = <%- JSON.stringify(myVar) %>;\
   times=0;
   editor = CodeMirror.fromTextArea(document.getElementById('editor') , {
   lineNumbers: true,
@@ -23,6 +25,7 @@ var times;
   mode:  "javascript",
   theme: "dracula"
   });
+  
   var id = getUrlParameter('id');
   if (!id) {
     location.search = location.search
