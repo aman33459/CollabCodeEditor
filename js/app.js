@@ -35,8 +35,8 @@ var times;
   input.getWrapperElement().style.display="none";
 
   return new Promise(function (resolve, reject) {
-    var pusher = new Pusher('99114c8a4e08776d1f8a',{
-  cluster: 'ap2'
+    var pusher = new Pusher('',{
+  cluster: ''
 });
     var channel = pusher.subscribe(id); // changes made to this id
     channel.bind('client-text-edit', function(html) {
@@ -124,7 +124,7 @@ function getOutput(text){
 
   xhr.open("GET", "https://judge0-extra.p.rapidapi.com/submissions/"+text);
   xhr.setRequestHeader("x-rapidapi-host", "judge0-extra.p.rapidapi.com");
-  xhr.setRequestHeader("x-rapidapi-key", "1c1573a73bmshcaa25526a644b60p1a3f21jsnbd7e7f3058bf");
+  xhr.setRequestHeader("x-rapidapi-key", "");
 
   xhr.send(data);
 }
@@ -167,7 +167,7 @@ function exec(){
 
   xhr.open("POST", "https://judge0-extra.p.rapidapi.com/submissions");
   xhr.setRequestHeader("x-rapidapi-host", "judge0-extra.p.rapidapi.com");
-  xhr.setRequestHeader("x-rapidapi-key", "1c1573a73bmshcaa25526a644b60p1a3f21jsnbd7e7f3058bf");
+  xhr.setRequestHeader("x-rapidapi-key", "");
   xhr.setRequestHeader("content-type", "application/json");
   xhr.setRequestHeader("accept", "application/json");
 
