@@ -10,8 +10,10 @@ Pusher Channels were used to achieve real time collaboration.
 Judge0 API was used as a sandbox for compilation and execution of the program.
 
 
-![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+![Alt Text](https://github.com/aman33459/CollabCodeEditor/blob/master/myimage.gif)
 
 
- 
- 
+![Image](https://github.com/aman33459/CollabCodeEditor/blob/master/Screenshot%20from%202020-06-17%2023-03-38.png)
+
+
+![Image](https://github.com/aman33459/CollabCodeEditor/blob/master/Screenshot%20from%202020-06-17%2023-04-31.png)
