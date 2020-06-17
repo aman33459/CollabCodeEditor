@@ -11,9 +11,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('./'));
 
 var pusher = new Pusher({
-  appId: '1016995',
-  key: '99114c8a4e08776d1f8a',
-  secret:  '03d0ad21e38f93a21cd3' 
+  appId: '',
+  key: '',
+  secret:  '' 
 });
 
 app.post('/pusher/auth', function(req, res) {
