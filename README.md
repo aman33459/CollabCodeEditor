@@ -19,11 +19,11 @@ Judge0 API was used as a sandbox for compilation and execution of the program.
 ![Image](https://github.com/aman33459/CollabCodeEditor/blob/master/Screenshot%20from%202020-06-17%2023-04-31.png)
 
 
-#Prerequisite
+# Prerequisite
 * Node 
 * Npm
 
-#Running the code
+# Running the code
 
 * npm install
 * npm start
